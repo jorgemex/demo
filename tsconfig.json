@@ -1,0 +1,36 @@
+{
+    "compileOnSave": true,
+    /*compilar al guardar cambios*/
+    "compilerOptions": {
+        "allowJs": false,
+        /*¿Compilar archivos .js?*/
+        "listEmittedFiles": false,
+        /* ¿Imprimir nombres de los archivos que se compilarán?*/
+        "listFiles": true,
+        /*¿Imprimir nombre de los archivos generados?*/
+        "pretty": true,
+        /*¿Colorear errores y mensajes?*/
+        "allowSyntheticDefaultImports": true,
+        "suppressImplicitAnyIndexErrors": true,
+        //"target": "es5", /* Valores disponibles: es3, es5, es6 */
+        "declaration": false,
+        /* Generar archivos ‘.d.ts’?’*/
+        "noImplicitAny": true,
+        /* ¿Lanzar error cuando se detecten variables sin tipo (any)?*/
+        // "noImplicitAny": false, /* ¿Lanzar error cuando se detecten variables sin tipo (any)?*/
+        "removeComments": true,
+        /* Eliminar comentarios en los archivos generados*/
+        "sourceMap": false,
+        "inlineSources": false,
+        /*Vaciar código fuente en archivo .map (Para debug desde navegador)*/
+        "moduleResolution": "node",
+        "module": "commonjs",
+        "target": "es6",
+        "outDir": "public/js",
+        //"outFile": "public/js/AppCompiled.js"
+        // "noEmitOnError":true,
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}
