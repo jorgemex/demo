@@ -277,6 +277,8 @@ export namespace Dashboard {
     //         map.setZoom(15);
     //     });
     // }
+    //jajaj
+    //comentario
     //comentario
 
     function fn_set_current_position(callback?: Function) {
