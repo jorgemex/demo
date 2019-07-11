@@ -277,6 +277,7 @@ export namespace Dashboard {
     //         map.setZoom(15);
     //     });
     // }
+    //comentario
 
     function fn_set_current_position(callback?: Function) {
         navigator.geolocation.getCurrentPosition(function (position) {
