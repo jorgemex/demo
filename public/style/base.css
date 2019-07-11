@@ -9,14 +9,17 @@ body {
 
 body {
     -webkit-touch-callout: none;
-    /*ios safari*/
+    /* iOS Safari */
     -webkit-user-select: none;
-    /*safari*/
+    /* Safari */
     -khtml-user-select: none;
-    /*Firefox*/
+    /* Konqueror HTML */
     -moz-user-select: none;
-    /*internet Explorer/Edge*/
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
     user-select: none;
+    /* Non-prefixed version, currently supported by Chrome and Opera */
 }
 
 *:focus {
@@ -30,7 +33,7 @@ text {
 .centerText,
 .titleText {
     text-anchor: middle;
-    alignment-baseline: "middle";
+    alignment-baseline: middle;
     dominant-baseline: middle;
 }
 
@@ -43,6 +46,7 @@ text {
     font-size: 22px;
 }
 
+/*Add Shadow Border for select Button*/
 .select-button:active {
     fill: #2A9FD8;
     opacity: 0.9;

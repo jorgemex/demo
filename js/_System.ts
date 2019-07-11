@@ -3,7 +3,8 @@ namespace _System {
     SystemJS.config({
       baseURL: "/",
       map: {
-        d3: "libs/d3.min.js"
+        d3: "libs/d3.min.js",
+        leaflet: "libs/leaflet.js"
       },
       meta: {
         d3: {
