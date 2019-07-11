@@ -5,4 +5,6 @@ import { Carga } from "./controles/control_svg_carga";
 export namespace MainPage {
   export let prop_contenedor_principal: d3.Selection<any, any, any, any>;
   export let prop_cargaLogin: Carga.iObjetoControl = null;
+  export let svg_top_parent: d3.Selection<any, any, any, any>;
+  export let prop_template_login: Template.iControlObject = null;
 }

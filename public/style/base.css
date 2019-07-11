@@ -10,5 +10,51 @@ body {
 body {
     -webkit-touch-callout: none;
     /*ios safari*/
-    /*jajaj*/
+    -webkit-user-select: none;
+    /*safari*/
+    -khtml-user-select: none;
+    /*Firefox*/
+    -moz-user-select: none;
+    /*internet Explorer/Edge*/
+    user-select: none;
+}
+
+*:focus {
+    outline: none;
+}
+
+text {
+    font-family: Arial, Verdana, Tahoma
+}
+
+.centerText,
+.titleText {
+    text-anchor: middle;
+    alignment-baseline: "middle";
+    dominant-baseline: middle;
+}
+
+.boldText,
+.titleText {
+    font-weight: bold;
+}
+
+.titleText {
+    font-size: 22px;
+}
+
+.select-button:active {
+    fill: #2A9FD8;
+    opacity: 0.9;
+    filter: url(#shadowed);
+}
+
+.select-sadowed:active {
+    fill: #2A9FD8;
+    opacity: 0.2;
+    filter: url(#shadowed);
+}
+
+.shadowed-card {
+    filter: url(#shadowed);
 }
