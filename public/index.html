@@ -6,10 +6,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Demo App</title>
     <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhrwGGW6j8BKCcYZKMTzliImPJEXDMX1Y&callback=false"></script> -->
-    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4vinG9CAGfuKrF6GbramTGzRHTr3C_-Y"></script>-->
+    <link href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" rel="stylesheet">
     <link href="style/base.css" rel="stylesheet">
     <link>
 </head>
+<style>
+    /* css to customize Leaflet default styles  */
+    .custom .leaflet-popup-tip {
+        background: #2F60A8;
+        color: #ffffff;
+        opacity: 0.9;
+    }
+
+    .custom .leaflet-popup-content-wrapper {
+        background: #2F60A8;
+        color: #ffffff;
+        opacity: 0.9;
+        border-radius: 10px;
+        padding: 0px;
+        width: 150px;
+    }
+
+    .button1 {
+        background-color: red;
+        width: 100%;
+        height: 30px;
+        border-radius: 12px;
+        border: 0px solid #4CAF50;
+    }
+
+    .button2 {
+        background-color: orange;
+        width: 160px;
+        height: 30px;
+        border-radius: 12px;
+        border: 0px solid #4CAF50;
+    }
+
+    .button3 {
+        background-color: green;
+        width: 100%;
+        height: 30px;
+        border-radius: 0 0 8px 8px;
+        border: 0px solid #4CAF50;
+
+    }
+
+    .leaflet-popup-content {
+        margin: 0px 0px
+    }
+</style>
 
 <body>
     <script src="libs/system.js"></script>
