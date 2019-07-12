@@ -6,7 +6,7 @@ var D3Utils;
 (function (D3Utils) {
     D3Utils.prop_height_footer = 50;
     D3Utils.prop_height_header = 50;
-    D3Utils.prop_color_primary = "#2F60A8";
+    D3Utils.prop_color_primary = "#262626";
     D3Utils.prop_color_text_header = "#fff";
     D3Utils.prop_color_acent = "#2A9FD8";
     D3Utils.max_distance_beetween_points = 50;
@@ -305,19 +305,6 @@ var D3Utils;
         };
     }
     D3Utils.get_icon_marker = get_icon_marker;
-    function get_icon_current_location() {
-        return {
-            path: "M-20,0a20,20 0 1,0 40,0a20,20 0 1,0 -40,0",
-            fillColor: D3Utils.prop_color_acent,
-            fillOpacity: 0.7,
-            anchor: new google.maps.Point(0, 0),
-            strokeWeight: 12,
-            strokeColor: "#2f60a8",
-            strokeOpacity: 0.5,
-            scale: 0.4
-        };
-    }
-    D3Utils.get_icon_current_location = get_icon_current_location;
     function fn_crearBtn(contenedor, width, text) {
         let g_content_btn = contenedor.append("g");
         let rect_btn = g_content_btn

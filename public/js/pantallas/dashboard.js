@@ -144,6 +144,7 @@ var Dashboard;
         hgt_screen_container = Math.floor(MainPage_1.MainPage._template.fun_get_height_content());
         prop_svg_app_map = MainPage_1.MainPage.prop_content_template;
         initMaps();
+        fn_set_current_position();
         fn_load_screen_app();
     }
     function fn_load_screen_app() {
@@ -193,7 +194,6 @@ var Dashboard;
         L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 18,
         }).addTo(lmaps);
-        setTimeout(mark, 2000);
     }
     function mark() {
         let data = {
@@ -213,26 +213,22 @@ var Dashboard;
         };
         fn_add_marker(data);
     }
+    var current_position;
+    var current_accuracy;
     function fn_set_current_position(callback) {
         navigator.geolocation.getCurrentPosition(function (position) {
             var pos = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
             };
-            map.panTo(pos);
-            map.setCenter(pos);
+            lmaps.panTo(pos);
             if (!mker_my_position) {
-                mker_my_position = new google.maps.Marker({
-                    position: pos,
-                    map: map,
-                    draggable: false,
-                    icon: Utils_1.D3Utils.get_icon_current_location()
-                });
+                mker_my_position = new L.Marker(pos).addTo(lmaps);
             }
             else
-                mker_my_position.setPosition(pos);
+                mker_my_position.setLatLng(pos);
             if (callback)
-                callback(mker_my_position.getPosition());
+                callback(mker_my_position.getLatLng());
         }, function (err) {
             console.log(err);
             MainPage_1.MainPage.fn_show_message("Error: location GPS not working!");
@@ -402,7 +398,7 @@ var Dashboard;
             mker_destination.setPosition(dest);
         }
         var bounds = new google.maps.LatLngBounds();
-        bounds.extend(mker_my_position.getPosition());
+        bounds.extend(mker_my_position.getLatLng());
         bounds.extend(dest);
         map.fitBounds(bounds);
         let info_window = new google.maps.InfoWindow({
@@ -526,7 +522,7 @@ var Dashboard;
                         });
                         if (mkers_asignaciones.length > 0) {
                             var bounds = new google.maps.LatLngBounds();
-                            bounds.extend(mker_my_position.getPosition());
+                            bounds.extend(mker_my_position.getLatLng());
                             mkers_asignaciones.forEach(mkr => {
                                 bounds.extend(mkr.getPosition());
                             });
@@ -819,13 +815,13 @@ var Dashboard;
         });
     }
     function fn_valid_distance_point_location(latLng, punto) {
-        let latlngPunto = new google.maps.LatLng(punto.Latitud, punto.Longitud);
-        var distance = Math.trunc(google.maps.geometry.spherical.computeDistanceBetween(latLng, latlngPunto));
+        let latlngPunto = { lat: punto.Latitud, lng: punto.Longitud };
+        var distance = latLng.distanceTo(latlngPunto);
         if (distance <= Utils_1.D3Utils.max_distance_beetween_points) {
             nextSuc = punto;
             map.setCenter(latlngPunto);
             map.setZoom(20);
-            mker_my_position.setPosition(latlngPunto);
+            mker_my_position.setLatLng(latlngPunto);
             if (mker_destination) {
                 mker_destination.setMap(null);
                 mker_destination = null;

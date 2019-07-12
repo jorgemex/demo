@@ -31,7 +31,8 @@ export namespace Dashboard {
     let g_info_window: d3.Selection<any, any, any, any>;
 
     var map: google.maps.Map;
-    var mker_my_position: google.maps.Marker;
+
+    var mker_my_position: L.Marker;
     var mker_destination: google.maps.Marker;
     var showDetailSucursal: boolean = false;
 
@@ -170,6 +171,8 @@ export namespace Dashboard {
 
         //Init Maps
         initMaps();
+        fn_set_current_position();
+
 
         //Init Screen
         fn_load_screen_app();
@@ -231,7 +234,7 @@ export namespace Dashboard {
 
         maxZoom: 18,
         }).addTo(lmaps);
-        setTimeout(mark,2000);
+       // setTimeout(mark,2000);
     }
     function mark() {
         let data = {
@@ -280,6 +283,8 @@ export namespace Dashboard {
     //jajaj
     //comentario
     //comentario
+    var current_position:any;
+    var current_accuracy: any;
 
     function fn_set_current_position(callback?: Function) {
         navigator.geolocation.getCurrentPosition(function (position) {
@@ -287,23 +292,17 @@ export namespace Dashboard {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
             };
+            lmaps.panTo(pos)
+            //map.panTo(pos);
 
-
-            map.panTo(pos);
-            map.setCenter(pos);
 
             if (!mker_my_position) {
-                mker_my_position = new google.maps.Marker({
-                    position: pos,
-                    map: map,
-                    draggable: false,
-                    icon: D3Utils.get_icon_current_location()
-                });
+                mker_my_position = new L.Marker(pos).addTo(lmaps);
             } else
-                mker_my_position.setPosition(pos);
+                mker_my_position.setLatLng(pos);
 
             if (callback)
-                callback(mker_my_position.getPosition())
+                callback(mker_my_position.getLatLng())
         }, function (err) {
             console.log(err)
             MainPage.fn_show_message("Error: location GPS not working!");
@@ -350,7 +349,6 @@ export namespace Dashboard {
                 initBtn.property("action", "next");
 
 
-                //CASO FARMACIAS . . . (MARCAR Llegada y salida del primer punto).
                 //MARCAR LLEGADA.
                 AsignacionRuta.fn_marcar_llegada_salida(rutaAsignada.IdAsignacion, nextSuc.IdPunto, true).then((resultBecome: any) => {
                     let resBecome = resultBecome.MarcarLlegadaSalidaResult;
@@ -502,7 +500,7 @@ export namespace Dashboard {
         }
 
         var bounds = new google.maps.LatLngBounds();
-        bounds.extend(mker_my_position.getPosition());
+        bounds.extend(mker_my_position.getLatLng());
         bounds.extend(dest);
 
         map.fitBounds(bounds);
@@ -683,7 +681,7 @@ export namespace Dashboard {
                         if (mkers_asignaciones.length > 0) {
                             var bounds = new google.maps.LatLngBounds();
 
-                            bounds.extend(mker_my_position.getPosition());
+                            bounds.extend(mker_my_position.getLatLng());
                             mkers_asignaciones.forEach(mkr => {
                                 bounds.extend(mkr.getPosition());
                             });
@@ -1038,22 +1036,22 @@ export namespace Dashboard {
         }
     }
 
-    function fn_find_nearby_routes(latLng: google.maps.LatLng) {
+    function fn_find_nearby_routes(latLng: L.LatLng) {
         rutasPunto.forEach(punto => {//rutasPunto -> contiene los pendientes por visitar.
             fn_valid_distance_point_location(latLng, punto);
         });
     }
 
-    function fn_valid_distance_point_location(latLng: google.maps.LatLng, punto: any) {
-        let latlngPunto = new google.maps.LatLng(punto.Latitud, punto.Longitud);
-        var distance = Math.trunc(google.maps.geometry.spherical.computeDistanceBetween(latLng, latlngPunto));
+    function fn_valid_distance_point_location(latLng: L.LatLng, punto: Entidades.IRutaPunto) {
+        let latlngPunto = {lat:punto.Latitud, lng: punto.Longitud};
+        var distance = latLng.distanceTo(latlngPunto);
 
         if (distance <= D3Utils.max_distance_beetween_points) {
             nextSuc = punto;
 
             map.setCenter(latlngPunto);
             map.setZoom(20);
-            mker_my_position.setPosition(latlngPunto);
+            mker_my_position.setLatLng(latlngPunto);
 
             if (mker_destination) {
                 mker_destination.setMap(null);
