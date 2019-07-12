@@ -7,7 +7,7 @@ export namespace D3Utils {
   export var _width_footer_container: number;
   export var _width_footer_button: number;
   export var _height_footer_button: number;
-  export var prop_color_primary: string = "#2F60A8";
+  export var prop_color_primary: string = "#262626";
   export var prop_color_text_header: string = "#fff";
   export var prop_color_acent: string = "#2A9FD8";
   export var max_distance_beetween_points: number = 50; //Ditancia en metros
@@ -415,18 +415,18 @@ export namespace D3Utils {
     };
   }
 
-  export function get_icon_current_location(): google.maps.Icon {
-    return ({
-      path: "M-20,0a20,20 0 1,0 40,0a20,20 0 1,0 -40,0",
-      fillColor: D3Utils.prop_color_acent,
-      fillOpacity: 0.7,
-      anchor: new google.maps.Point(0, 0),
-      strokeWeight: 12,
-      strokeColor: "#2f60a8",
-      strokeOpacity: 0.5,
-      scale: 0.4
-    } as unknown) as google.maps.Icon;
-  }
+  // export function get_icon_current_location(): google.maps.Icon {
+  //   return {
+  //     path: "M-20,0a20,20 0 1,0 40,0a20,20 0 1,0 -40,0",
+  //     fillColor: D3Utils.prop_color_acent,
+  //     fillOpacity: 0.7,
+  //     anchor: new google.maps.Point(0, 0),
+  //     strokeWeight: 12,
+  //     strokeColor: "#2f60a8",
+  //     strokeOpacity: 0.5,
+  //     scale: 0.4
+  //   } as google.maps.Icon;
+  // }
 
   //prueba
   export function fn_crearBtn(
