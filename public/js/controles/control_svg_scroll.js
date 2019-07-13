@@ -213,7 +213,7 @@ var Scroll;
             propiedades.el_contenedor_scroll
                 .append("rect")
                 .classed("scroll-background", true)
-                .attr("fill", propiedades.prop_config.prop_background_color || "#ffffff");
+                .attr("fill", propiedades.prop_config.prop_background_color || "#262626");
             el_g_contenido_clip = propiedades.el_contenedor_scroll
                 .append("g")
                 .attr("class", "g-contenido-clip")
@@ -223,7 +223,7 @@ var Scroll;
             el_g_contenido_clip
                 .append("rect")
                 .classed("contenido-background", true)
-                .attr("fill", propiedades.prop_config.prop_background_color || "#ffffff");
+                .attr("fill", propiedades.prop_config.prop_background_color || "#262626");
             el_g_contenido_clip
                 .datum(null)
                 .append(() => propiedades.el_contenido_.node())

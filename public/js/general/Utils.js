@@ -8,7 +8,7 @@ var D3Utils;
     D3Utils.prop_height_header = 50;
     D3Utils.prop_color_primary = "#262626";
     D3Utils.prop_color_text_header = "#fff";
-    D3Utils.prop_color_acent = "#2A9FD8";
+    D3Utils.prop_color_acent = "#262626";
     D3Utils.max_distance_beetween_points = 50;
     D3Utils.consider_base_route = false;
     D3Utils.visit_time = 25;
@@ -215,7 +215,7 @@ var D3Utils;
             .append("path")
             .attr("d", "M36 16 L36 20 L18 4 L0 20 L0 16 L18 0")
             .classed("arrow-footer", true)
-            .attr("fill", "#2A9FD8")
+            .attr("fill", "#262626")
             .attr("width", "30")
             .attr("height", "30")
             .attr("transform", "translate(0,12)");
@@ -251,7 +251,7 @@ var D3Utils;
             .attr("width", D3Utils._width_footer_button)
             .attr("height", D3Utils._height_footer_button)
             .style("stroke-width", "2")
-            .style("stroke", "#2A9FD8")
+            .style("stroke", "#262626")
             .attr("rx", 20)
             .attr("ry", 20)
             .attr("fill", "white");
@@ -262,7 +262,7 @@ var D3Utils;
             .attr("y", "22")
             .attr("x", D3Utils._width_footer_button / 2)
             .style("text-anchor", "middle")
-            .style("fill", "#2A9FD8")
+            .style("fill", "#262626")
             .text(text);
         return g_content_btn;
     }
@@ -278,7 +278,7 @@ var D3Utils;
             .attr("x", "5")
             .attr("y", "6")
             .style("stroke-width", "2")
-            .style("stroke", "#2A9FD8")
+            .style("stroke", "#262626")
             .attr("rx", 10)
             .attr("ry", 10)
             .attr("fill", "white");
@@ -288,7 +288,7 @@ var D3Utils;
             .attr("x", width_button / 2)
             .attr("y", "32")
             .style("text-anchor", "middle")
-            .style("fill", "#2A9FD8")
+            .style("fill", "#262626")
             .text("Entrega");
         return g_content_btn;
     }

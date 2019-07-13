@@ -453,7 +453,7 @@ export namespace Scroll {
         .classed("scroll-background", true)
         .attr(
           "fill",
-          propiedades.prop_config.prop_background_color || "#ffffff"
+          propiedades.prop_config.prop_background_color || "#262626"
         );
 
       // Se crea un SVGGElement que tendra el clipPath.
@@ -474,7 +474,7 @@ export namespace Scroll {
         .classed("contenido-background", true)
         .attr(
           "fill",
-          propiedades.prop_config.prop_background_color || "#ffffff"
+          propiedades.prop_config.prop_background_color || "#262626"
         );
 
       // Se agrega el elemento SVGGElement al grupo que tiene el clipPath.

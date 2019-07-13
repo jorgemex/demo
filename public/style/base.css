@@ -48,13 +48,13 @@ text {
 
 /*Add Shadow Border for select Button*/
 .select-button:active {
-    fill: #2A9FD8;
+    fill: #262626;
     opacity: 0.9;
     filter: url(#shadowed);
 }
 
 .select-sadowed:active {
-    fill: #2A9FD8;
+    fill: #262626;
     opacity: 0.2;
     filter: url(#shadowed);
 }

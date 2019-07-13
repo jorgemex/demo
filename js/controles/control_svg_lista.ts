@@ -656,7 +656,7 @@ export namespace Lista {
         let el_g_lista = propiedades.el_g_contenedor_items.select(".list-g-list-selected")
             .classed("list-g-list-selected", false);
 
-        el_g_lista.select(".list-row-rect").attr("fill", fun_get_color_fila(propiedades, indice_fila));
+        el_g_lista.select(".list-row-rect").attr("fill", "green");
         el_g_lista.select(".list-row-text").attr("font-weight", "normal");
 
         propiedades.prop_id_fila_seleccionada = undefined;

@@ -53,7 +53,7 @@ export namespace dialogs {
 
       let content_in = confirm_dialog
         .append("g")
-        .style("fill", "aliceblue")
+        .style("fill", "#262626")
         .attr(
           "transform",
           "translate(" +
@@ -70,7 +70,7 @@ export namespace dialogs {
         .attr("width", wth_alert_dlg)
         .attr("rx", 8)
         .attr("ry", 8)
-        .style("fill", "aliceblue");
+        .style("fill", "#262626");
 
       content_in
         .append("text")

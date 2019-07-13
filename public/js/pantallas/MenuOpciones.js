@@ -18,39 +18,48 @@ var MenuOpciones;
     function fn_mostrar_ocultar_opciones(parent) {
         if (!MenuOpciones.isMnuOptnsShown) {
             if (MenuOpciones.mnu_opts == null) {
-                MenuOpciones.mnu_opts = parent.append("g")
-                    .style("pointer-events", "all");
-                MenuOpciones.mnu_opts.append("rect")
+                MenuOpciones.mnu_opts = parent.append("g").style("pointer-events", "all");
+                MenuOpciones.mnu_opts
+                    .append("rect")
                     .attr("x", "0")
                     .attr("y", "0")
                     .attr("width", MainPage_1.MainPage._template.fun_get_width())
-                    .attr("height", MainPage_1.MainPage._template.fun_get_height_content() + MainPage_1.MainPage._template.fun_get_height_header() + MainPage_1.MainPage._template.fun_get_height_footer())
+                    .attr("height", MainPage_1.MainPage._template.fun_get_height_content() +
+                    MainPage_1.MainPage._template.fun_get_height_header() +
+                    MainPage_1.MainPage._template.fun_get_height_footer())
                     .style("fill", "#000000")
                     .style("opacity", "0.04");
                 MenuOpciones.mnu_opts.call(Utils_1.D3Utils.eventos.fun_agregar_click, () => {
                     fn_hide_menu_opciones();
                 });
-                let list_in = MenuOpciones.mnu_opts.append("g")
+                let list_in = MenuOpciones.mnu_opts
+                    .append("g")
                     .style("fill", Utils_1.D3Utils.prop_color_acent)
-                    .attr("transform", "translate(" + (MainPage_1.MainPage._template.fun_get_width() / 2 - 11) + ", " + (Utils_1.D3Utils.prop_height_header + 3) + ")");
-                list_in.append("path").attr("fill", "#2A9FD8")
+                    .attr("transform", "translate(" +
+                    (MainPage_1.MainPage._template.fun_get_width() / 2 - 11) +
+                    ", " +
+                    (Utils_1.D3Utils.prop_height_header + 3) +
+                    ")");
+                list_in
+                    .append("path")
+                    .attr("fill", "#262626")
                     .attr("transform", "translate(167, -12)")
                     .attr("d", "M32 16 L16 0 L0 16");
                 _menu = [
                     { ID: 1, Title: "Sitios", TextColor: "white" },
                     { ID: 2, Title: "Información de entrega", TextColor: "white" }
                 ];
-                list_in.append("rect")
+                list_in
+                    .append("rect")
                     .attr("x", "0")
                     .attr("y", "0")
                     .attr("height", _height_item_menu * _menu.length + 8)
                     .attr("width", MainPage_1.MainPage._template.fun_get_width() / 2 + 8)
                     .attr("rx", 8)
                     .attr("ry", 8)
-                    .style("fill", Utils_1.D3Utils.prop_color_acent)
+                    .style("fill", "#262626")
                     .classed("shadowed-card", true);
-                let list_in2 = list_in.append("g")
-                    .attr("transform", "translate(4, 4)");
+                let list_in2 = list_in.append("g").attr("transform", "translate(4, 4)");
                 fn_crear_tabla_lista(list_in2, _menu, MainPage_1.MainPage._template.fun_get_width() / 2, _height_item_menu * _menu.length, Utils_1.D3Utils.prop_color_acent, fn_item_selected_options);
             }
             else {
@@ -104,18 +113,21 @@ var MenuOpciones;
                 fun_on_dibuja_fila: (g_fila, datum, cx, cy) => {
                     fn_crear_fila_menu(d3.select(g_fila), datum);
                 },
-                fun_on_actualiza_fila: (g_fila, datum, cx, cy) => {
-                }
+                fun_on_actualiza_fila: (g_fila, datum, cx, cy) => { }
             }
         });
-        contenedor.append(() => prop_listaMenuD3.element).attr("transform", "translate(0,0)");
+        contenedor
+            .append(() => prop_listaMenuD3.element)
+            .attr("transform", "translate(0,0)");
     }
     function fn_crear_fila_menu(fila, datum) {
-        let g_content_texts = fila.append("g")
+        let g_content_texts = fila
+            .append("g")
             .attr("transform", "translate(10, 0)");
         let _pos_start_text_item = 0;
         if (datum.Image) {
-            g_content_texts.append("image")
+            g_content_texts
+                .append("image")
                 .attr("x", "10")
                 .attr("y", "2")
                 .attr("width", 30)
@@ -123,7 +135,8 @@ var MenuOpciones;
                 .attr("xlink:href", datum.Image);
             _pos_start_text_item = 50;
         }
-        g_content_texts.append("text")
+        g_content_texts
+            .append("text")
             .classed("text_title_item", true)
             .attr("font-size", "18")
             .attr("x", _pos_start_text_item)
