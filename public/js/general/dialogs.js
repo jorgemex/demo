@@ -33,7 +33,7 @@ var dialogs;
                 .style("opacity", "0.1");
             let content_in = dialogs.confirm_dialog
                 .append("g")
-                .style("fill", "aliceblue")
+                .style("fill", "#262626")
                 .attr("transform", "translate(" +
                 (MainPage_1.MainPage._template.fun_get_width() - wth_alert_dlg) / 2 +
                 ", " +
@@ -46,7 +46,7 @@ var dialogs;
                 .attr("width", wth_alert_dlg)
                 .attr("rx", 8)
                 .attr("ry", 8)
-                .style("fill", "aliceblue");
+                .style("fill", "#262626");
             content_in
                 .append("text")
                 .text(title)

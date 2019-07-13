@@ -121,7 +121,7 @@ export namespace Menu {
       .attr("y", 60)
       .attr("width", 200)
       .attr("height", 60)
-      .attr("xlink:href", "images/demo.png");
+      .attr("xlink:href", "images/demo1.png");
 
     g_user
       .append("text")
