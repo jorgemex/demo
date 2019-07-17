@@ -55,37 +55,10 @@ export namespace infoEntrega {
       .append("g")
       .attr("width", MainPage._template_infoentrega.fun_get_width() - 20)
       .attr("transform", "translate(10,5)");
-    /**
-     *inix
-     */
-    //didcionario para cargar la informacion
-    let valor;
-    let dicActual = new Map();
-    d3.json("js/data/actual.json")
-      .then(function(data) {})
-      .catch(function() {
-        console.log("error al cargar los datos");
-      });
-    function actal(data: any) {
-      for (let index = 0; index < data.length; index++) {
-        let actual: Entidades.actual = new Object() as Entidades.actual;
-        actual.Id = data[index]["Id"];
-        actual.nombre = data[index]["nombre"];
-        dicActual.set(actual.nombre + "", actual);
-      }
-      mostrar();
-    }
-    function mostrar() {
-      dicActual.forEach((value, key) => {});
-    }
 
-    /**
-     *
-     */
     //dowpdown
     let g_content_dropDown = prop_content_infoentrega.append("g");
 
-    function pEnter(d: d3.Selection<any, any, any, any>) {}
     g_content_dropDown
       .append("rect")
       .attr("width", 360)
@@ -93,8 +66,57 @@ export namespace infoEntrega {
       .attr("ry", 10)
       .attr("stroke-width", 1)
       .attr("stroke", "black")
+      //.attr("clip-path", "url(#clips)")
       .attr("contenteditable", true)
       .attr("transform", "translate(20,50)");
+
+    let g_contentbuton = prop_content_infoentrega
+      .append("g")
+      .on("click", function() {
+        alert("seguro?");
+      });
+    g_contentbuton
+      .attr("transform", "translate(80, 560)")
+      .append("rect")
+      .attr("width", 100)
+      .attr("height", 30)
+      .attr("ry", 10)
+      .attr("fill", "green");
+
+    g_contentbuton
+      .append("text")
+      .text("Aceptar")
+      .attr("x", 20)
+      .attr("y", 20);
+    let form = prop_content_infoentrega
+      .append("g")
+      .attr("transform", "translate(100,400)");
+
+    // form
+    //   .append("rect")
+    //   .attr("width", 200)
+    //   .attr("height", 100)
+    //   .attr("ry", 10)
+    //   .attr("fill", "red");
+
+    // let inp = form
+    //   .append("foreignObject")
+    //   .attr("width", 200)
+    //   .attr("height", 50)
+    //   .attr("x", 0)
+    //   .attr("y", 0)
+    //   .append("xhtml:body")
+    //   .append("textarea")
+    //   .style("font-size", "20px");
+
+    g_content_titles
+      .append("g")
+      .append("rect")
+      .attr("width", 100)
+      .attr("height", 30)
+      .attr("ry", 10)
+      .attr("fill", "orange")
+      .attr("transform", "translate(200, 560)");
 
     g_content_titles
       .append("text")
@@ -108,12 +130,24 @@ export namespace infoEntrega {
 
     d3.json("js/data/actual.json").then(function(data: any) {
       var dats;
+      var id: any;
       for (var i = 0; i < data.length; i++) {
         dats = data[i]["nombre"];
+        id = data[i]["Id"];
+        g_content_dropDown
+          .append("rect")
+          .attr("width", 340)
+          .attr("height", 30)
+          .attr("stroke-width", 0.5)
+          .attr("stroke", "#616161")
+          .on("click", function() {
+            console.log("id", id);
+          })
+          .attr("transform", "translate(30," + (60 + i * 30) + ")");
         g_content_dropDown
           .append("text")
           .text(dats)
-          .attr("x", "30")
+          .attr("x", 30)
           .attr("y", 80 + i * 30)
           .style("fill", "#000000")
           .style("font-size", "18")
